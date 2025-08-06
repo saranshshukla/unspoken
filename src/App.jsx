@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ScenarioLibrary from "./features/scenarioLibrary/ScenarioLibrary";
 import CustomBuilder from "./features/customBuilder/CustomBuilder";
 import PuzzleEngine from "./features/puzzles/PuzzleEngine";
@@ -11,6 +11,18 @@ function App() {
   const [aiInput, setAIInput] = useState("");
   const [section, setSection] = useState("scenarios");
 
+useEffect(() => {
+  const titles = {
+    scenarios: "Scenarios",
+    custom: "Custom Builder",
+    puzzles: "Puzzles",
+    ai: "AI Feedback",
+    community: "Community",
+    privacy: "Privacy",
+};
+ document.title = titles[section] || "Unspoken";
+}, [section]); 
+  
   return (
     <div
       style={{
